@@ -73,11 +73,12 @@ public class SearchActivity extends BaseActivity implements SearchMvp.View {
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(SearchActivity.this);
         // toolbar
+
+        setSupportActionBar(searchToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         searchToolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
         });
-        setSupportActionBar(searchToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // widgets
         pager.setAdapter(new FragmentsPagerAdapter(getSupportFragmentManager(),
                 FragmentPagerAdapterModel.buildForSearch(this)));
