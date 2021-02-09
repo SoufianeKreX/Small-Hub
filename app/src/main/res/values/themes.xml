@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="lightWindowBackground">#FAFAFA</color>
+    <color name="lightDivider">#80949494</color>
+    <color name="light_patch_addition_color">#CCFFCC</color>
+    <color name="light_patch_deletion_color">#FFDDDD</color>
+    <color name="light_patch_ref_color">#EEEEEE</color>
+    <color name="light_primary">#F5F5F5</color>
+    <color name="light_primary_dark">#E0E0E0</color>
+    <color name="light_accent">#2962FF</color>
+
+
+    <style name="AppTheme.ThemeOverLay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+    <style name="AppTheme.PopUpOverLay" parent="ThemeOverlay.MaterialComponents.Dark" />
+
+    <style name="ThemeLight.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/material_blue_900</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/material_blue_600</item>
+
+        <!--        Material Component Attrs-->
+        <item name="colorSecondary">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/lightWindowBackground</item>
+        <item name="colorOnSurface">@color/material_light_black</item>
+        <item name="colorOnPrimarySurface">@color/material_light_black</item>
+
+
+        <!--        Custom Attrs -->
+        <item name="icon_color">#212121</item>
+        <item name="card_background">@color/light_patch_ref_color</item>
+        <item name="info_toolbar_color">@color/light_primary</item>
+
+        <!--
+
+        <item name="patch_deletion" >@color/material_light_black</item>
+        <item name="patch_addition" >@color/material_light_black</item>
+        <item name="patch_ref" >@color/material_light_black</item>
+        <item name="dividerColor">@color/material_light_black</item>
+        <item name="comment_box_style" >@color/material_light_black</item>-->
+
+
+        <item name="colorControlNormal">?colorAccent</item>
+        <item name="actionModeBackground">?colorPrimary</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+
+        <item name="android:textColorPrimary">#212121</item>
+        <item name="android:textColorSecondary">#5E5D5D</item>
+        <item name="android:textColorTertiary">#686868</item>
+        <item name="android:colorEdgeEffect">?colorPrimary</item>
+
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+</resources>

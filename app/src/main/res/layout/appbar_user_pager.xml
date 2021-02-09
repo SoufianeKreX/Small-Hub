@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.ThemeOverLay">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/user_pager_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:popupTheme="@style/AppTheme.PopUpOverLay"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:title="@string/app_name"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/user_pager_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/keyline_1"
+        app:tabSelectedTextColor="?colorAccent"
+        tools:ignore="RtlSymmetry"/>
+
+</com.google.android.material.appbar.AppBarLayout>

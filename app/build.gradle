@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.soufianekre.smallhub"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+
+
+kapt {
+    generateStubs = true
+}
+repositories {
+    maven { url "https://clojars.org/repo/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://jitpack.io" }
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
+    implementation 'androidx.browser:browser:1.2.0'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.core:core:1.3.2'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    // UI Libraries
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+    implementation "cn.gavinliu:ShapedImageView:0.8.7"
+    implementation "it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.2"
+
+
+    implementation "com.github.bumptech.glide:glide:${glideVersion}"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // Rx java
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    // network
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation 'com.annimon:stream:1.1.9'
+
+    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
+    implementation "com.squareup.retrofit2:converter-scalars:${retrofit}"
+
+    // html + network
+    implementation 'com.github.nightwhistler:HtmlSpanner:0.4'
+    implementation 'org.jsoup:jsoup:1.12.1'
+
+    implementation "com.evernote:android-state:${state_version}"
+
+
+    implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
+    implementation("com.apollographql.apollo:apollo-runtime:1.2.2")
+
+    // markdown libraries
+    implementation "com.atlassian.commonmark:commonmark:${commonmark}"
+    implementation "com.atlassian.commonmark:commonmark-ext-autolink:${commonmark}"
+    implementation "com.atlassian.commonmark:commonmark-ext-gfm-strikethrough:${commonmark}"
+    implementation "com.atlassian.commonmark:commonmark-ext-gfm-tables:${commonmark}"
+    implementation "com.atlassian.commonmark:commonmark-ext-ins:${commonmark}"
+    implementation "com.atlassian.commonmark:commonmark-ext-yaml-front-matter:${commonmark}"
+
+
+    // debug
+    debugImplementation 'com.github.whataa:pandora:2.0.6'
+    releaseImplementation 'com.github.whataa:pandora-no-op:2.0.3'
+    debugImplementation 'cat.ereza:customactivityoncrash:2.2.0'
+    // test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
