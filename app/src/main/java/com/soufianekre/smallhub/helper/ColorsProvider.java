@@ -10,11 +10,11 @@ import androidx.annotation.Nullable;
 
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
-import com.soufianekre.smallhub.data.models.LanguageColorModel;
-import com.soufianekre.smallhub.SmallHubApp;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import com.soufianekre.smallhub.SmallHubApp;
+import com.soufianekre.smallhub.data.models.LanguageColorModel;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,29 +31,37 @@ public class ColorsProvider {
 
     // Predefined languages.
     private static List<String> POPULAR_LANG = Stream.of("Java", "Kotlin", "JavaScript", "Python", "CSS", "PHP",
-            "Ruby", "C++", "C", "Go", "Swift","Dart","TypeScript","Scala","Html").toList();
+            "Ruby", "C++", "C", "Go", "Swift", "Dart", "TypeScript", "Scala", "Html").toList();
 
     private static Map<String, LanguageColorModel> colors = new LinkedHashMap<>();
 
     @SuppressLint("CheckResult")
-    public static void load() {
+    public static void load(Context context) {
         if (colors.isEmpty()) {
             Observable<String> observable = Observable
                     .create(observableEmitter -> {
                         try {
-                            Type type = new TypeToken<Map<String, LanguageColorModel>>() {}.getType();
-                            try (InputStream stream = SmallHubApp.getInstance().getAssets().open("colors.json")) {
-                                Gson gson = new Gson();
-                                try (JsonReader reader = new JsonReader(new InputStreamReader(stream))) {
-                                    colors.putAll(gson.fromJson(reader, type));
-                                    for (String lang : colors.keySet()){
-                                        if (!POPULAR_LANG.contains(lang)){
-                                            colors.remove(lang);
-                                        }
-                                    }
-                                    observableEmitter.onNext("");
+                            Type type = new TypeToken<Map<String, LanguageColorModel>>() {
+                            }.getType();
+                            InputStream stream = context
+                                    .getAssets().open("colors.json");
+                            int size = stream.available();
+
+                            Gson gson = new Gson();
+                            JsonReader reader =
+                                    new JsonReader(new InputStreamReader(stream));
+
+                            colors.putAll(gson.fromJson(reader, type));
+
+                            /*
+                            for (String lang : colors.keySet()) {
+                                if (!POPULAR_LANG.contains(lang)) {
+                                    colors.remove(lang);
                                 }
                             }
+
+                             */
+                            observableEmitter.onNext("");
                         } catch (IOException e) {
                             e.printStackTrace();
                             observableEmitter.onError(e);
@@ -89,7 +97,10 @@ public class ColorsProvider {
         LanguageColorModel color = getColor(lang);
         int langColor = ColorGenerator.getColor(context, lang);
         if (color != null && !InputHelper.isEmpty(color.getColor())) {
-            try {langColor = Color.parseColor(color.getColor());} catch (Exception ignored) {}
+            try {
+                langColor = Color.parseColor(color.getColor());
+            } catch (Exception ignored) {
+            }
         }
         return langColor;
     }

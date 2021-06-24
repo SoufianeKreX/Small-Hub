@@ -47,4 +47,7 @@
     <string name="no_contributors">No Contributors</string>
     <string name="sample_trending_desc_data">Open-source live chat software,an alternative to intercom, Zendesk,Drift,Crisp.etc</string>
     <string name="Wiki">Wiki</string>
+    <string name="filter">Filter</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
 </resources>

@@ -33,13 +33,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                android:contentDescription="nothing"
                 android:src="@drawable/ic_add"
                 android:tint="@color/white"
                 android:visibility="gone"
                 app:fabSize="normal"
-                app:layout_behavior="it.sephiroth.android.library.bottomnavigation.FloatingActionButtonBehavior"
-                tools:visibility="visible" />
+                tools:visibility="visible"
+                app:layout_behavior="it.sephiroth.android.library.bottomnavigation.FloatingActionButtonBehavior"/>
 
             <it.sephiroth.android.library.bottomnavigation.BottomNavigation
                 android:id="@+id/bottomNavigation"
@@ -47,7 +46,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 app:bbn_entries="@menu/repo_bottom_nav_menu"
-                app:layout_behavior="it.sephiroth.android.library.bottomnavigation.BottomBehavior" />
+                app:layout_behavior="it.sephiroth.android.library.bottomnavigation.BottomBehavior"
+
+                />
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

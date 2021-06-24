@@ -13,7 +13,7 @@ public class SmallHubApp extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        ColorsProvider.load();
+        ColorsProvider.load(this);
     }
 
     public static Application getInstance() {

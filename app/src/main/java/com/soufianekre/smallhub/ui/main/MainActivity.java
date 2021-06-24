@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainMvp.View {
 
     @BindView(R.id.main_drawer_layout)
     DrawerLayout drawerLayout;
+
     @BindView(R.id.main_nav)
     NavigationView mainNavigationView;
 
@@ -50,11 +51,13 @@ public class MainActivity extends BaseActivity implements MainMvp.View {
 
     @BindView(R.id.trending_repo_recycler_view)
     DynamicRecyclerView trendingRepoRecyclerView;
+
     @BindView(R.id.trending_swipe_refresh_layout)
     SwipeRefreshLayout trendingSwipeRefresh;
 
     @BindView(R.id.trending_empty_layout)
     StateLayout trendingEmptyView;
+
     @BindView(R.id.fastScroller)
     RecyclerViewFastScroller fastScroller;
 
@@ -203,9 +206,11 @@ public class MainActivity extends BaseActivity implements MainMvp.View {
 
     private Drawable createOvalShapeDrawable(int color){
         GradientDrawable drawable = new GradientDrawable();
+
+        drawable.setColor(color);
         drawable.setShape(GradientDrawable.OVAL);
         drawable.setSize(24, 24);
-        drawable.setColor(color);
+
         return drawable;
     }
 

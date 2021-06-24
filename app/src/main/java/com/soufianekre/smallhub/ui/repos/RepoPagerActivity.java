@@ -294,12 +294,7 @@ public class RepoPagerActivity extends BaseActivity implements RepoPagerMvp.View
                 }
             }
 
-        }/* else if (navType == ISSUES && filterLayout.isShown()) {
-            hideFilterLayout();
-            return;
         }
-        */
-        super.onBackPressed();
     }
 
 

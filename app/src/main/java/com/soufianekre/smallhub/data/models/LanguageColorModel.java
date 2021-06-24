@@ -4,8 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class LanguageColorModel implements Parcelable {
-    public String color;
-    public String url;
+
+    private String url;
+    private String color;
+
 
     @Override
     public int describeContents() {
@@ -58,7 +60,7 @@ public class LanguageColorModel implements Parcelable {
     public String toString() {
         return "LanguageColorModel{" +
                 "color='" + color + '\'' +
-                ", url='" + url + '\'' +
+                ", url ='" + url + '\'' +
                 '}';
     }
 }

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/textView"
@@ -31,7 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:webview_background="?android:windowBackground"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        tools:visibility="gone"/>
 
     <ProgressBar
         android:id="@+id/readmeLoader"
@@ -42,8 +43,9 @@
         android:indeterminate="false"
         android:paddingEnd="@dimen/spacing_xs_large"
         android:paddingStart="@dimen/spacing_xs_large"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:visibility="gone"/>
 
     <include layout="@layout/state_empty_layout"
-        android:visibility="gone"/>
+        tools:visibilty="visible"/>
 </FrameLayout>

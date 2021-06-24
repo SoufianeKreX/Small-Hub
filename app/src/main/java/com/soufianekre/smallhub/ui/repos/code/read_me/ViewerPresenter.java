@@ -39,13 +39,14 @@ public class ViewerPresenter<V extends ViewerMvp.View> extends BasePresenter<V>
 
     @Override public void onHandleIntent(@Nullable Bundle intent) {
         if (intent == null){
-            getMvpView().showMessage("handling Intent is Impossibe because of  null");
+            getMvpView().showMessage("Intent is  null");
             return;
         }
         isRepo = intent.getBoolean(BundleConstant.EXTRA);
         url = intent.getString(BundleConstant.ITEM);
         htmlUrl = intent.getString(BundleConstant.EXTRA_TWO);
         Log.e("Viewer Presenter","htmlUrl  : = " + htmlUrl);
+
         if (!InputHelper.isEmpty(url)) {
             if (MarkDownProvider.isArchive(url)) {
                 getMvpView().onError(R.string.archive_file_detected_error);
@@ -117,7 +118,7 @@ public class ViewerPresenter<V extends ViewerMvp.View> extends BasePresenter<V>
                         getMvpView().onSetCode(downloadedStream);
                     }
                 },throwable ->{
-                    Log.e("ViewerPres:WorkOnline",throwable.getLocalizedMessage());
+                    Log.e("ViewerPresenter",throwable.getLocalizedMessage());
                 }));
 
     }

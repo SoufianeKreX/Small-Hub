@@ -6,13 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:theme="@style/AppTheme.ThemeOverLay">
+    android:theme="@style/ThemeLight.Base.ThemeOverLay">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/user_pager_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        app:popupTheme="@style/AppTheme.PopUpOverLay"
+        app:popupTheme="@style/ThemeLight.Base.PopUpOverLay"
         app:layout_scrollFlags="scroll|enterAlways"
         app:title="@string/app_name"
         />

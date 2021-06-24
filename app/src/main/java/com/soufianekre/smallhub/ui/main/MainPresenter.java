@@ -1,6 +1,7 @@
 package com.soufianekre.smallhub.ui.main;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 
 import com.annimon.stream.Collectors;
@@ -39,8 +40,11 @@ public class MainPresenter<V extends MainMvp.View> extends BasePresenter<V> impl
         String language = "";
         if (lang.equals("All")) language = "";
         else language = lang.replace(" ", "-").toLowerCase();
+
+
         getCompositeDisposable().add(RxHelper
-                .getObservable(JsoupProvider.getTrendingService(model.getPathUrl()).getTrending(language, since))
+                .getObservable(JsoupProvider.getTrendingService(model.getPathUrl())
+                        .getTrending(language, since))
                 .doOnSubscribe(disposable -> {
                     getMvpView().showProgress();
                     getMvpView().clearAdapter();
@@ -49,10 +53,14 @@ public class MainPresenter<V extends MainMvp.View> extends BasePresenter<V> impl
                         getTrendingObservable(stringResponse.body(), model)))
                 .subscribe(
                         response -> {
-                            getMvpView().showMessage("Trending List size :" + trendingModelsList.size());
+                            getMvpView().showMessage("Trending List size : " + trendingModelsList.size() + " items");
                             getMvpView().onNotifyAdapter(response);
+                            getMvpView().hideProgress();
                         },
-                        this::onError,
+                        throwable ->{
+                            onError(throwable);
+                            getMvpView().hideProgress();
+                        } ,
                         () -> {
                             getMvpView().hideProgress();
                         }
@@ -94,24 +102,28 @@ public class MainPresenter<V extends MainMvp.View> extends BasePresenter<V> impl
                 }, this::onError));
     }
 
-    private void sendWithColor(String param) {
-        LanguageColorModel color = ColorsProvider.getColor(param);
-        if (color != null) {
+    private void sendWithColor(String lang) {
+        LanguageColorModel langColorModel = ColorsProvider.getColor(lang);
+        Log.e("MainPresenter","Showing Colors");
+
+        if (langColorModel != null) {
+            Log.e("MainPresenter",langColorModel.toString());
             try {
-                int lanColor = Color.parseColor(color.color);
-                getMvpView().onAppendNavMenuItem(param, lanColor);
+                int lanColor = Color.parseColor(langColorModel.getColor());
+                getMvpView().onAppendNavMenuItem(lang, lanColor);
             } catch (Exception e) {
-                getMvpView().onAppendNavMenuItem(param, Color.LTGRAY);
+                Log.e("MainPresenter","Color Parsing Error :" + e.getLocalizedMessage());
+                getMvpView().onAppendNavMenuItem(lang, Color.MAGENTA);
             }
         } else {
-            getMvpView().onAppendNavMenuItem(param, Color.LTGRAY);
+            getMvpView().onAppendNavMenuItem(lang, Color.MAGENTA);
         }
     }
 
     @Override
     public void onItemClick(int position, View v, TrendingModel item) {
         // go To repo Activity
-        getMvpView().showMessage("Go To Repo");
+        // getMvpView().showMessage("Go To Repo");
         getMvpView().showTrendingRepo(position,item);
 
     }
